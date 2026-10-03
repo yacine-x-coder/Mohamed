@@ -48,95 +48,53 @@ textarea,
 button {
   font: inherit;
 }
-* =========================================================
-   LIGHT MODE — PAGE
+/* =========================================================
+   LIGHT MODE
 ========================================================= */
 
-body.light-mode main {
-  color: #111827;
+body {
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
 }
 
-body.light-mode main section {
-  color: #111827;
-}
+/* LIGHT BODY */
 
-body.light-mode main h1,
-body.light-mode main h2,
-body.light-mode main h3 {
+body.light-mode {
+  background: #f4f6fa !important;
   color: #111827 !important;
 }
 
-body.light-mode main p {
-  color: rgba(17, 24, 39, 0.65);
-}
+/* Navbar */
 
-body.light-mode main .text-white {
-  color: #111827 !important;
-}
-
-body.light-mode main .text-white\/50 {
-  color: rgba(17, 24, 39, 0.55) !important;
-}
-
-body.light-mode main .text-white\/45 {
-  color: rgba(17, 24, 39, 0.55) !important;
-}
-
-body.light-mode main .text-white\/40 {
-  color: rgba(17, 24, 39, 0.5) !important;
-}
-
-body.light-mode main .text-white\/35 {
-  color: rgba(17, 24, 39, 0.45) !important;
-}
-
-body.light-mode main .text-white\/30 {
-  color: rgba(17, 24, 39, 0.4) !important;
-}
-
-body.light-mode main .text-white\/20 {
-  color: rgba(17, 24, 39, 0.3) !important;
-}
-
-body.light-mode main .border-white\/10 {
-  border-color: rgba(17, 24, 39, 0.1) !important;
-}
-
-body.light-mode main .bg-white\/5 {
-  background: rgba(17, 24, 39, 0.05) !important;
-}
-
-body.light-mode main .bg-white\/10 {
-  background: rgba(17, 24, 39, 0.08) !important;
-}
-
-body.light-mode main .bg-white\/\[0\.035\] {
+body.light-mode .light-navbar {
   background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
-body.light-mode main .bg-white\/\[0\.04\] {
-  background: rgba(255, 255, 255, 0.8) !important;
+body.light-mode .light-text {
+  color: #111827 !important;
 }
 
-body.light-mode main .bg-white\/\[0\.05\] {
-  background: rgba(255, 255, 255, 0.85) !important;
+body.light-mode .light-nav-link {
+  color: rgba(17, 24, 39, 0.65) !important;
 }
 
-body.light-mode main .bg-black\/20 {
-  background: rgba(17, 24, 39, 0.04) !important;
+body.light-mode .light-nav-link:hover {
+  background: rgba(17, 24, 39, 0.07) !important;
+  color: #111827 !important;
 }
 
-body.light-mode main .bg-black\/50 {
-  background: rgba(255, 255, 255, 0.8) !important;
+body.light-mode .light-theme-button {
+  background: rgba(17, 24, 39, 0.06) !important;
+  color: #111827 !important;
 }
 
-body.light-mode main .bg-black\/80 {
+body.light-mode .light-theme-button:hover {
+  background: rgba(17, 24, 39, 0.1) !important;
+}
+
+body.light-mode .light-mobile-menu {
   background: rgba(255, 255, 255, 0.9) !important;
-}
-
-/* Selection */
-
-body.light-mode ::selection {
-  background: #111827;
-  color: white;
 }
