@@ -1,7 +1,7 @@
 "use client";
 
-import { Menu, Moon, Sun, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const links = [
   { name: "Home", href: "/#home" },
@@ -14,39 +14,6 @@ const links = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dark, setDark] = useState(true);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-
-    if (saved === "light") {
-      setDark(false);
-      document.body.classList.add("light-mode");
-      document.body.classList.remove("dark-mode");
-    } else {
-      setDark(true);
-      document.body.classList.add("dark-mode");
-      document.body.classList.remove("light-mode");
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    setDark((current) => {
-      const next = !current;
-
-      if (next) {
-        document.body.classList.remove("light-mode");
-        document.body.classList.add("dark-mode");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.body.classList.remove("dark-mode");
-        document.body.classList.add("light-mode");
-        localStorage.setItem("theme", "light");
-      }
-
-      return next;
-    });
-  };
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50">
@@ -60,18 +27,22 @@ export default function Navbar() {
           shadow-2xl
           backdrop-blur-xl
           transition-all duration-500
-          light-navbar
         "
       >
         {/* Logo */}
         <a
           href="/#home"
-          className="text-xl font-black tracking-tight text-white light-text"
+          className="
+            text-xl font-black tracking-tight
+            text-white
+            transition-all duration-300
+            hover:text-blue-400
+          "
         >
           MOHAMED<span className="text-blue-400">.</span>
         </a>
 
-        {/* Desktop */}
+        {/* Desktop Navigation */}
         <nav className="hidden items-center gap-1 md:flex">
           {links.map((link) => (
             <a
@@ -84,7 +55,6 @@ export default function Navbar() {
                 transition-all duration-300
                 hover:bg-white/10
                 hover:text-white
-                light-nav-link
               "
             >
               {link.name}
@@ -92,45 +62,26 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          {/* THEME BUTTON */}
-          <button
-            type="button"
-            onClick={toggleTheme}
-            className="
-              rounded-xl
-              bg-white/5
-              p-2.5
-              text-white
-              transition-all duration-300
-              hover:bg-white/10
-              light-theme-button
-            "
-            aria-label="Toggle theme"
-          >
-            {dark ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
-
-          {/* MOBILE */}
-          <button
-            type="button"
-            onClick={() => setMobileOpen((value) => !value)}
-            className="
-              rounded-xl
-              bg-white/5
-              p-2.5
-              text-white
-              md:hidden
-              light-theme-button
-            "
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
+        {/* Mobile Menu Button */}
+        <button
+          type="button"
+          onClick={() => setMobileOpen((value) => !value)}
+          className="
+            rounded-xl
+            bg-white/5
+            p-2.5
+            text-white
+            transition-all duration-300
+            hover:bg-white/10
+            md:hidden
+          "
+          aria-label="Toggle menu"
+        >
+          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Navigation */}
       {mobileOpen && (
         <div
           className="
@@ -140,7 +91,7 @@ export default function Navbar() {
             p-3
             shadow-2xl
             backdrop-blur-xl
-            light-mobile-menu
+            md:hidden
           "
         >
           {links.map((link) => (
@@ -153,10 +104,9 @@ export default function Navbar() {
                 px-4 py-3
                 text-sm
                 text-white/70
-                transition-all
+                transition-all duration-300
                 hover:bg-white/10
                 hover:text-white
-                light-nav-link
               "
             >
               {link.name}
